@@ -3,25 +3,19 @@ library(dplyr)
 library(tidyr)
 file_path <- "data/SchoolAccident_2019~2023.xlsx"
 
-# 시트 이름 리스트
 sheet_names <- c("2019", "2020", "2021", "2022", "2023")
-
-# 빈 리스트를 생성하여 데이터프레임 저장
 data_frames <- list()
 
-# for 문을 사용하여 각 시트를 읽어오기
 for (sheet in sheet_names) {
   data_frames[[sheet]] <- read_excel(file_path, sheet = sheet)
 }
 
-# 각 데이터프레임을 변수로 저장
 df_2019 <- data_frames[["2019"]]
 df_2020 <- data_frames[["2020"]]
 df_2021 <- data_frames[["2021"]]
 df_2022 <- data_frames[["2022"]]
 df_2023 <- data_frames[["2023"]]
 
-# 사고 장소별 사고 횟수 계산
 accident_counts <- list()
 for (year in sheet_names) {
   accident_counts[[year]] <- data_frames[[year]] %>%
@@ -32,13 +26,16 @@ for (year in sheet_names) {
 
 print(accident_counts[["2023"]])
 
+accident_counts[["2023"]] <- accident_counts[["2023"]] %>%
+  mutate(사고장소 = ifelse(사고장소 == "교외", "교외활동", 사고장소))
+
 combined_data <- bind_rows(accident_counts)
 
-# 데이터프레임을 wide format으로 변환
+# wide format 변환
 wide_data <- combined_data %>%
   spread(key = year, value = count, fill = 0)
 
-# 사고 장소별로 꺾은선 그래프 그리기
+# 장소별로 꺾은선 그래프
 unique_places <- unique(combined_data$사고장소)
 years <- as.numeric(sheet_names)
 
@@ -53,4 +50,4 @@ for (i in 1:length(unique_places)) {
   lines(years, counts, type = "o", col = colors[i], pch = 16)
 }
 
-legend("topright", legend = unique_places, col = colors, pch = 16, title = "사고 장소")
+legend("topleft", legend = unique_places, col = colors, pch = 16, title = "사고 장소")
