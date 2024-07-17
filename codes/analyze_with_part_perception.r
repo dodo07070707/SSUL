@@ -14,7 +14,7 @@ for (sheet in sheet_names) {
 accident_counts <- list()
 total_counts <- list()
 
-# 연도별 사고 장소별 사고 횟수 및 총 사고 횟수 계산
+# 연도별 사고 부위별 사고 횟수 및 총 사고 횟수 계산
 for (year in sheet_names) {
   yearly_data <- data_frames[[year]] %>%
     group_by(사고부위) %>%
@@ -43,11 +43,21 @@ for (year in sheet_names) {
 # 데이터프레임 병합
 combined_data <- bind_rows(accident_counts)
 
+for (year in sheet_names) {
+  accident_counts[[year]] <- accident_counts[[year]] %>%
+    mutate(사고부위 = case_when(
+      사고부위 == "낙상-넘어짐" ~ "낙상",
+      사고부위 == "낙상-미끄러짐" ~ "낙상",
+      사고부위 == "낙상-떨어짐" ~ "낙상",
+      TRUE ~ 낙상  # 변경할 필요 없는 경우 그대로 유지
+    ))
+}
+
 # 데이터프레임을 wide format으로 변환
 wide_data <- combined_data %>%
   pivot_wider(names_from = year, values_from = rate, values_fill = list(rate = 0))
 
-# 사고 장소별로 꺾은선 그래프 그리기
+# 사고 부위별로 꺾은선 그래프 그리기
 unique_places <- unique(combined_data$사고부위)
 years <- as.numeric(sheet_names)
 
