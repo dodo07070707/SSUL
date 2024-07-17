@@ -47,3 +47,5 @@ counts <- as.numeric(wide_data[1, -1])
 
 plot(years, counts, type = "o", col = "blue", pch = 16, ylim = c(0, max(counts, na.rm = TRUE)),
      xlab = "년도", ylab = "사고 횟수", main = "물리적힘 노출 사고 횟수 변화 추이 (2019-2023)")
+
+print(physical_force_data)
