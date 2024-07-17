@@ -30,5 +30,5 @@ library(tidyr) # tidyr 라이브러리 불러오기
 2021년 : 167418건 / 129397건  
 
 # 사용 데이터 주소
-학교안전공제중앙회_학교안전사고데이터 - https://www.xn--289axkt9l0mao04fs9c7wrl7hfxc.com/filaboard/detail.php?c=p&v=v&s=22  
+학교안전공제중앙회_학교안전사고데이터 - https://www.xn--289axkt9l0mao04fs9c7wrl7hfxc.com/index.php    
 소방청_대국민 응급처치교육 추진 실적 - https://www.data.go.kr/data/15063551/fileData.do
