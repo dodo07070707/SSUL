@@ -29,10 +29,11 @@ library(tidyr) # tidyr 라이브러리 불러오기
 2020년 : 72344건 / 71703건  
 2021년 : 167418건 / 129397건  
 
+# 분석 자료
+![KakaoTalk_20240717_181613749](https://github.com/user-attachments/assets/0945008f-43eb-4e15-821b-60fdd279df2c)
+![KakaoTalk_20240717_112305919](https://github.com/user-attachments/assets/f9030c0f-0cc0-42e7-96af-5df85b6e7991)  
+
 # 사용 데이터 주소
 학교안전공제중앙회_학교안전사고데이터 - https://www.xn--289axkt9l0mao04fs9c7wrl7hfxc.com/index.php    
 소방청_대국민 응급처치교육 추진 실적 - https://www.data.go.kr/data/15063551/fileData.do  
 
-# 분석 자료
-![KakaoTalk_20240717_181613749](https://github.com/user-attachments/assets/0945008f-43eb-4e15-821b-60fdd279df2c)
-![KakaoTalk_20240717_112305919](https://github.com/user-attachments/assets/f9030c0f-0cc0-42e7-96af-5df85b6e7991)
