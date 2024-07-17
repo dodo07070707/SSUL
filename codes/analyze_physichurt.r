@@ -26,13 +26,6 @@ for (year in sheet_names) {
 # 데이터프레임 병합
 combined_data <- bind_rows(accident_counts)
 
-# '낙상' 카테고리 통합
-combined_data <- combined_data %>%
-  mutate(사고형태 = case_when(
-    사고형태 %in% c("낙상-넘어짐", "낙상-미끄러짐", "낙상-떨어짐") ~ "낙상",
-    TRUE ~ 사고형태
-  ))
-
 # '물리적힘 노출' 데이터만 추출
 physical_force_data <- combined_data %>%
   filter(사고형태 == "물리적힘 노출")
