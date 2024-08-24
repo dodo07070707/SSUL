@@ -1,4 +1,4 @@
-# SchoolAccident
+# SSUL+
 **Subject**
 공공데이터포털과 학교안전공제중앙회의 데이터를 이용하여 학교 안전사고 분석  
 **Developer**
